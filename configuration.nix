@@ -75,7 +75,7 @@
   services.openssh = {
     enable = lib.mkDefault true;
     # settings = { PasswordAuthentication = lib.mkDefault false; };
-    passwordAuthentication = lib.mkDefault false;
+    passwordAuthentication = lib.mkDefault true;
   };
 
   boot.zfs.forceImportRoot = lib.mkDefault false;
@@ -86,7 +86,7 @@
 
   security = {
     doas.enable = lib.mkDefault true;
-    sudo.enable = lib.mkDefault false;
+    sudo.enable = lib.mkDefault true;
   };
 
   environment.systemPackages = builtins.attrValues {
