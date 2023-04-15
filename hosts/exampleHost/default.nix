@@ -22,6 +22,8 @@
         "nvme"
         # for external usb drive
         "uas"
+        # for mmc drive
+        "rtsx_usb_sdmmc"
       ];
       removableEfi = true;
       kernelParams = [ ];
