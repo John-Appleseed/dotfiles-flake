@@ -27,5 +27,12 @@
       hostId = "abcd1234";
     };
   };
-  users.users.root.openssh.authorizedKeys.keys = [ "authorizedKeys_placeholder" ];
+  services.openssh = {
+    enable = true;
+    # require public key authentication for better security
+    passwordAuthentication = true;
+    kbdInteractiveAuthentication = false;
+    permitRootLogin = "yes";
+  };
+  users.users."root".openssh.authorizedKeys.keys = [ "authorizedKeys_placeholder" ];
 }
