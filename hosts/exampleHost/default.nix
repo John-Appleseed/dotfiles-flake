@@ -1,4 +1,4 @@
-# #
+##
 ##
 ##  per-host configuration for exampleHost
 ##
@@ -27,15 +27,4 @@
       hostId = "abcd1234";
     };
   };
-  services.openssh = {
-    enable = true;
-    # require public key authentication for better security
-    passwordAuthentication = true;
-    kbdInteractiveAuthentication = false;
-    permitRootLogin = "yes";
-  };
-  users.extraUsers.root.openssh.authorizedKeys.keyFiles = [
-    /etc/nixos/ssh/authorized_keys
-  ];
-  users.extraUsers.root.openssh.authorizedKeys.keys = [ "authorizedKeys_placeholder" ];
 }
