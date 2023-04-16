@@ -26,6 +26,6 @@
       timeZone = "Europe/Berlin";
       hostId = "abcd1234";
     };
-    users.users.root.openssh.authorizedKeys.keys = [ "authorizedKeys_placeholder" ]
+    users.users.root.openssh.authorizedKeys.keys = [ "authorizedKeys_placeholder" ];
   };
 }
