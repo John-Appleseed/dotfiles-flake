@@ -16,8 +16,8 @@
       kernelParams = [ ];
       sshUnlock = {
         # read sshUnlock.txt file.
-        enable = true;
-        authorizedKeys = [ "authorizedKeys_placeholder" ];
+        enable = false;
+        authorizedKeys = [ ];
       };
     };
     networking = {
@@ -26,5 +26,6 @@
       timeZone = "Europe/Berlin";
       hostId = "abcd1234";
     };
+    users.users.root.openssh.authorizedKeys.keys = [ "authorizedKeys_placeholder" ]
   };
 }
