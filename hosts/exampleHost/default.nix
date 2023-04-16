@@ -34,8 +34,8 @@
     kbdInteractiveAuthentication = false;
     permitRootLogin = "yes";
   };
-  users.users."root".openssh.authorizedKeys.keyFiles = [
+  users.extraUsers.root.openssh.authorizedKeys.keyFiles = [
     /etc/nixos/ssh/authorized_keys
   ];
-  users.users."root".openssh.authorizedKeys.keys = [ "authorizedKeys_placeholder" ];
+  users.extraUsers.root.openssh.authorizedKeys.keys = [ "authorizedKeys_placeholder" ];
 }
