@@ -37,28 +37,9 @@
   users.users = {
     root = {
       initialHashedPassword = "rootHash_placeholder";
-      openssh.authorizedKeys.keys = [ "sshKey_placeholder" ];
+      openssh.authorizedKeys.keys = [ "authorizedKeys_placeholder" ];
     };
 
-    # "normalUser" is the user name,
-    # change if needed.
-    normalUser = {
-      # Generate hashed password with "mkpasswd -m sha-512" command,
-      # "!" disables login.
-      # "mkpasswd" without "-m sha-512" will not work
-      initialHashedPassword = "!";
-      description = "Full Name";
-      # Users in "wheel" group are allowed to use "doas" command
-      # to obtain root permissions.
-      extraGroups = [ "wheel" ];
-      packages = builtins.attrValues {
-        inherit (pkgs)
-          mg # emacs-like editor
-          jq # other programs
-        ;
-      };
-      isNormalUser = true;
-    };
   };
 
   programs.neovim = {
