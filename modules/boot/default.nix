@@ -67,20 +67,20 @@ in {
   config = mkIf (cfg.enable) (mkMerge [
     {
       zfs-root.fileSystems.datasets = {
-        "rpool/nixos/home" = mkDefault "/home";
-        "rpool/nixos/var/lib" = mkDefault "/var/lib";
-        "rpool/nixos/var/log" = mkDefault "/var/log";
-        "bpool/nixos/root" = "/boot";
+        "z/nixos/home" = mkDefault "/home";
+        "z/nixos/var/lib" = mkDefault "/var/lib";
+        "z/nixos/var/log" = mkDefault "/var/log";
+        "zb/nixos/root" = "/boot";
       };
     }
     (mkIf (!cfg.immutable) {
-      zfs-root.fileSystems.datasets = { "rpool/nixos/root" = "/"; };
+      zfs-root.fileSystems.datasets = { "z/nixos/root" = "/"; };
     })
     (mkIf cfg.immutable {
       zfs-root.fileSystems = {
         datasets = {
-          "rpool/nixos/empty" = "/";
-          "rpool/nixos/root" = "/oldroot";
+          "z/nixos/empty" = "/";
+          "z/nixos/root" = "/oldroot";
         };
         bindmounts = {
           "/oldroot/nix" = "/nix";
@@ -89,8 +89,8 @@ in {
       };
       boot.initrd.postDeviceCommands = ''
         if ! grep -q zfs_no_rollback /proc/cmdline; then
-          zpool import -N rpool
-          zfs rollback -r rpool/nixos/empty@start
+          zpool import -N z
+          zfs rollback -r z/nixos/empty@start
           zpool export -a
         fi
       '';
@@ -151,7 +151,7 @@ in {
           };
           postCommands = ''
             tee -a /root/.profile >/dev/null <<EOF
-            if zfs load-key rpool/nixos; then
+            if zfs load-key z/nixos; then
                pkill zfs
             fi
             exit
