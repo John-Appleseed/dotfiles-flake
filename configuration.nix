@@ -9,7 +9,7 @@
   else
     throw "refuse to build: git tree is dirty";
 
-  system.stateVersion = "22.11";
+  system.stateVersion = "23.11";
   boot.loader.systemd-boot.enable = true;
 
   # Enable NetworkManager for wireless networking,
