@@ -10,6 +10,7 @@
     throw "refuse to build: git tree is dirty";
 
   system.stateVersion = "22.11";
+  boot.loader.systemd-boot.enable = true;
 
   # Enable NetworkManager for wireless networking,
   # You can configure networking with "nmtui" command.
