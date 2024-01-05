@@ -11,6 +11,7 @@
 
   system.stateVersion = "23.11";
   boot.loader.systemd-boot.enable = true;
+  boot.loader.grub.enable = false;
 
   # Enable NetworkManager for wireless networking,
   # You can configure networking with "nmtui" command.
